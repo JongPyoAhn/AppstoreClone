@@ -15,7 +15,9 @@ final class TodayViewController: UIViewController{
         
         collectionView.backgroundColor = .systemBackground
         collectionView.register(TodayCollectionViewCell.self, forCellWithReuseIdentifier: "todayCell")
-        
+        collectionView.register(TodayCollectionHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: "TodayCollectionHeaderView")
         return collectionView
     }()
     override func viewDidLoad() {
@@ -44,6 +46,14 @@ extension TodayViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TodayCollectionHeaderView", for: indexPath) as? TodayCollectionHeaderView
+        else {return UICollectionReusableView()}
+        header.configureUI()
+        return header
+    }
+
 }
 
 extension TodayViewController: UICollectionViewDelegateFlowLayout{
@@ -51,5 +61,11 @@ extension TodayViewController: UICollectionViewDelegateFlowLayout{
         let width = self.collectionView.frame.width - 32.0
         return CGSize(width: width, height: width)
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width - 32.0, height: 100)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let value: CGFloat = 16
+        return UIEdgeInsets(top: value, left: value, bottom: value, right: value)
+    }
 }
