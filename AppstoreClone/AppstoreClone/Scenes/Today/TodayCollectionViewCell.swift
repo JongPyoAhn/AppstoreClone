@@ -47,9 +47,13 @@ final class TodayCollectionViewCell: UICollectionViewCell{
     func setup() {
         configureUI()
         
-        subTitleLabel.text = "서브타이틀"
-        descriptionLabel.text = "설명설명"
-        titleLabel.text = "앱의 이름"
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 10
+        
+        self.subTitleLabel.text = "서브타이틀"
+        self.descriptionLabel.text = "설명설명"
+        self.titleLabel.text = "앱의 이름"
     }
 }
 private extension TodayCollectionViewCell{
