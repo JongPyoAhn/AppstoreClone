@@ -87,6 +87,8 @@ private extension TodayViewController{
             let data = try Data(contentsOf: url)
             let result = try PropertyListDecoder().decode([Today].self, from: data)
             todayList = result
-        }catch{ }
+        }catch{
+            fatalError()
+        }
     }
 }

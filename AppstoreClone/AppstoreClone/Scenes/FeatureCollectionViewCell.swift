@@ -9,6 +9,9 @@ import SnapKit
 import UIKit
 
 final class FeatureCollectionViewCell: UICollectionViewCell{
+    
+    private var task: URLSessionDataTask!
+    
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.systemBlue
@@ -38,13 +41,13 @@ final class FeatureCollectionViewCell: UICollectionViewCell{
         return imageView
     }()
     
-    func setup(){
-        configureUI()
+    func setup(_ feature: Feature){
+        self.configureUI()
         
-        subTitleLabel.text = "type"
-        titleLabel.text = "App name"
-        descriptionLabel.text = "description"
-        imageView.backgroundColor = .gray
+        self.subTitleLabel.text = feature.type
+        self.titleLabel.text = feature.appName
+        self.descriptionLabel.text = feature.description
+        self.fetchImage(feature.imageURL)
     }
 }
 private extension FeatureCollectionViewCell{
@@ -73,5 +76,20 @@ private extension FeatureCollectionViewCell{
             $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(8)
             $0.bottom.equalToSuperview().inset(8)
         }
+    }
+    func fetchImage(_ url: String){
+        guard let url = URL(string: url) else {return}
+        task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error{
+                fatalError(error.localizedDescription)
+            }
+            
+            guard let data = data, let image = UIImage(data: data) else {return}
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+            
+        }
+        self.task.resume()
     }
 }

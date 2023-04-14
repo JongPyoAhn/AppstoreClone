@@ -7,6 +7,9 @@
 import SnapKit
 import UIKit
 final class RankingFeatureSectionView: UIView {
+    
+    private var rankingFeatureList: [RankingFeature] = []
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "iPhone이 처음이라면"
@@ -47,6 +50,8 @@ final class RankingFeatureSectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureUI()
+        self.fetchData()
+        self.collectionView.reloadData()
     }
     
     required init?(coder: NSCoder) {
@@ -89,12 +94,12 @@ extension RankingFeatureSectionView{
 extension RankingFeatureSectionView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingFeatureSectionCollectionViewCell", for: indexPath) as? RankingFeatureSectionCollectionViewCell else {return UICollectionViewCell()}
-        cell.setup()
+        cell.setup(self.rankingFeatureList[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        9
+        self.rankingFeatureList.count
     }
     
 }
@@ -102,5 +107,18 @@ extension RankingFeatureSectionView: UICollectionViewDataSource{
 extension RankingFeatureSectionView: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.collectionView.frame.width - 32.0, height: RankingFeatureSectionCollectionViewCell.height)
+    }
+}
+extension RankingFeatureSectionView {
+    func fetchData(){
+        guard let url = Bundle.main.url(forResource: "RankingFeature", withExtension: "plist") else {return}
+        do{
+            let data = try Data(contentsOf: url)
+            let result = try PropertyListDecoder().decode([RankingFeature].self, from: data)
+            self.rankingFeatureList = result
+        }catch(let error){
+            fatalError(error.localizedDescription)
+        }
+        
     }
 }

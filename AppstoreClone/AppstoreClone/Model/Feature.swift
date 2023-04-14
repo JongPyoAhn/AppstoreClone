@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Feature{
+struct Feature: Decodable{
     let type: String
     let appName: String
     let description: String

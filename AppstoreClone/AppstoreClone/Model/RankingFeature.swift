@@ -6,8 +6,9 @@
 //
 
 import Foundation
-struct RankingFeature{
+struct RankingFeature: Decodable{
     let title: String
     let description: String
-    let insInPurchaseApp: Bool
+    let isInPurchaseApp: Bool
 }
+

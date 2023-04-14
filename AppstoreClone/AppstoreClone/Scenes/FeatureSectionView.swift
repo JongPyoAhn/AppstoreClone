@@ -7,6 +7,9 @@
 
 import UIKit
 final class FeatureSectionView: UIView{
+    
+    private var featureList: [Feature] = []
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -25,7 +28,9 @@ final class FeatureSectionView: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
+        self.configureUI()
+        self.fetchData()
+        collectionView.reloadData()
     }
     
     required init?(coder: NSCoder) {
@@ -56,12 +61,12 @@ final class FeatureSectionView: UIView{
 extension FeatureSectionView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeatureCollectionViewCell", for: indexPath) as? FeatureCollectionViewCell else {return UICollectionViewCell()}
-        cell.setup()
+        cell.setup(self.featureList[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        self.featureList.count
     }
 }
 extension FeatureSectionView: UICollectionViewDelegateFlowLayout{
@@ -76,3 +81,17 @@ extension FeatureSectionView: UICollectionViewDelegateFlowLayout{
         32.0
     }
 }
+extension FeatureSectionView{
+    func fetchData(){
+        guard let url = Bundle.main.url(forResource: "Feature", withExtension: "plist") else {return}
+        do{
+            let data = try Data(contentsOf: url)
+            let result = try PropertyListDecoder().decode([Feature].self, from: data)
+            self.featureList = result
+        }catch(let err){
+            fatalError(err.localizedDescription)
+        }
+    }
+}
+    
+

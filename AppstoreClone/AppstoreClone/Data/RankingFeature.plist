@@ -28,14 +28,6 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>재그지그</string>
-		<key>description</key>
-		<string>내일 입을 옷 더이상 걱정하지 말아요.</string>
-		<key>isInPurchaseApp</key>
-		<false/>
-	</dict>
-	<dict>
-		<key>title</key>
 		<string>LinkedOut</string>
 		<key>description</key>
 		<string>캐리어를 꿈꿔요.</string>
