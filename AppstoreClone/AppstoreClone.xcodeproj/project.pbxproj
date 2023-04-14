@@ -10,6 +10,12 @@
 		535D3E9E29E83F6D0085FC93 /* RankingFeatureSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D3E9D29E83F6D0085FC93 /* RankingFeatureSectionCollectionViewCell.swift */; };
 		535D3EA029E8F07D0085FC93 /* ExchangeCodeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D3E9F29E8F07D0085FC93 /* ExchangeCodeButtonView.swift */; };
 		535D3EA229E8FB240085FC93 /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D3EA129E8FB240085FC93 /* AppDetailViewController.swift */; };
+		535D3EA629E905810085FC93 /* Feature.plist in Resources */ = {isa = PBXBuildFile; fileRef = 535D3EA329E905810085FC93 /* Feature.plist */; };
+		535D3EA729E905810085FC93 /* RankingFeature.plist in Resources */ = {isa = PBXBuildFile; fileRef = 535D3EA429E905810085FC93 /* RankingFeature.plist */; };
+		535D3EA829E905810085FC93 /* Today.plist in Resources */ = {isa = PBXBuildFile; fileRef = 535D3EA529E905810085FC93 /* Today.plist */; };
+		535D3EAB29E906510085FC93 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D3EAA29E906510085FC93 /* Today.swift */; };
+		535D3EAE29E9069D0085FC93 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D3EAD29E9069D0085FC93 /* Feature.swift */; };
+		535D3EB029E906C90085FC93 /* RankingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D3EAF29E906C90085FC93 /* RankingFeature.swift */; };
 		5372161729E7F1130078E2A8 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5372161629E7F1130078E2A8 /* AppViewController.swift */; };
 		5372161A29E7F6800078E2A8 /* FeatureSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5372161929E7F6800078E2A8 /* FeatureSectionView.swift */; };
 		5372161C29E7F85B0078E2A8 /* FeatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5372161B29E7F85B0078E2A8 /* FeatureCollectionViewCell.swift */; };
@@ -31,6 +37,12 @@
 		535D3E9D29E83F6D0085FC93 /* RankingFeatureSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFeatureSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		535D3E9F29E8F07D0085FC93 /* ExchangeCodeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCodeButtonView.swift; sourceTree = "<group>"; };
 		535D3EA129E8FB240085FC93 /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
+		535D3EA329E905810085FC93 /* Feature.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Feature.plist; sourceTree = "<group>"; };
+		535D3EA429E905810085FC93 /* RankingFeature.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RankingFeature.plist; sourceTree = "<group>"; };
+		535D3EA529E905810085FC93 /* Today.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Today.plist; sourceTree = "<group>"; };
+		535D3EAA29E906510085FC93 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
+		535D3EAD29E9069D0085FC93 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		535D3EAF29E906C90085FC93 /* RankingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFeature.swift; sourceTree = "<group>"; };
 		5372161629E7F1130078E2A8 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		5372161929E7F6800078E2A8 /* FeatureSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSectionView.swift; sourceTree = "<group>"; };
 		5372161B29E7F85B0078E2A8 /* FeatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -61,6 +73,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		535D3EA929E905880085FC93 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				535D3EA329E905810085FC93 /* Feature.plist */,
+				535D3EA429E905810085FC93 /* RankingFeature.plist */,
+				535D3EA529E905810085FC93 /* Today.plist */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		535D3EAC29E906930085FC93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				535D3EAA29E906510085FC93 /* Today.swift */,
+				535D3EAD29E9069D0085FC93 /* Feature.swift */,
+				535D3EAF29E906C90085FC93 /* RankingFeature.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5372161829E7F1180078E2A8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +126,8 @@
 		53C7EE1E29E6B43400CB4697 /* AppstoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				535D3EAC29E906930085FC93 /* Model */,
+				535D3EA929E905880085FC93 /* Data */,
 				53C7EE3929E6C64700CB4697 /* Scenes */,
 				53C7EE1F29E6B43400CB4697 /* AppDelegate.swift */,
 				53C7EE2129E6B43400CB4697 /* SceneDelegate.swift */,
@@ -191,6 +225,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535D3EA729E905810085FC93 /* RankingFeature.plist in Resources */,
+				535D3EA829E905810085FC93 /* Today.plist in Resources */,
+				535D3EA629E905810085FC93 /* Feature.plist in Resources */,
 				53C7EE2C29E6B43500CB4697 /* LaunchScreen.storyboard in Resources */,
 				53C7EE2929E6B43500CB4697 /* Assets.xcassets in Resources */,
 			);
@@ -204,8 +241,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				53C7EE3C29E6C66D00CB4697 /* TodayViewController.swift in Sources */,
+				535D3EAB29E906510085FC93 /* Today.swift in Sources */,
 				535D3EA029E8F07D0085FC93 /* ExchangeCodeButtonView.swift in Sources */,
 				53C7EE2429E6B43400CB4697 /* TabBarController.swift in Sources */,
+				535D3EB029E906C90085FC93 /* RankingFeature.swift in Sources */,
+				535D3EAE29E9069D0085FC93 /* Feature.swift in Sources */,
 				5372161E29E80BD50078E2A8 /* SeparatorView.swift in Sources */,
 				53C7EE2029E6B43400CB4697 /* AppDelegate.swift in Sources */,
 				53C7EE4229E6D0C100CB4697 /* TodayCollectionHeaderView.swift in Sources */,
