@@ -23,10 +23,16 @@ final class AppViewController: UIViewController{
         let rankingFeatureSectionView = RankingFeatureSectionView(frame: .zero)
         let exchangeCodeButtonView = ExchangeCodeButtonView()
         
+        let spacingView = UIView()
+        spacingView.snp.makeConstraints {
+            $0.height.equalTo(100)
+        }
+        
         [
             featureSectionView,
             rankingFeatureSectionView,
-            exchangeCodeButtonView
+            exchangeCodeButtonView,
+            spacingView
         ].forEach{
             stackView.addArrangedSubview($0)
         }
