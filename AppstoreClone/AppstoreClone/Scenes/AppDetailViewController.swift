@@ -48,6 +48,12 @@ final class AppDetailViewController: UIViewController{
         let button = UIButton()
         button.tintColor = .systemBlue
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        let action = UIAction {[weak self] _ in
+            let activityItems: [Any] = [self!.today.title]
+            let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+            self?.present(activityViewController, animated: true)
+        }
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
