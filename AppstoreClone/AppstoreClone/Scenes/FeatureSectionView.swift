@@ -4,9 +4,17 @@
 //
 //  Created by 안종표 on 2023/04/13.
 //
+import SnapKit
 
 import UIKit
+
+protocol FeatureSectionViewDelegate: AnyObject {
+    func presentUI(_ feature: Feature)
+}
+
 final class FeatureSectionView: UIView{
+     
+    weak var delegate: FeatureSectionViewDelegate?
     
     private var featureList: [Feature] = []
     
@@ -80,6 +88,11 @@ extension FeatureSectionView: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         32.0
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.presentUI(self.featureList[indexPath.item])
+        
+    }
+    
 }
 extension FeatureSectionView{
     func fetchData(){

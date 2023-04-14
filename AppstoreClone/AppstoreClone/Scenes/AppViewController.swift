@@ -20,6 +20,7 @@ final class AppViewController: UIViewController{
         stackView.spacing = 0.0
         
         let featureSectionView = FeatureSectionView(frame: .zero)
+        featureSectionView.delegate = self
         let rankingFeatureSectionView = RankingFeatureSectionView(frame: .zero)
         let exchangeCodeButtonView = ExchangeCodeButtonView()
         
@@ -75,4 +76,12 @@ private extension AppViewController{
             $0.edges.equalToSuperview()
         }
     }
+}
+extension AppViewController: FeatureSectionViewDelegate{
+    func presentUI(_ feature: Feature) {
+        let vc = AppDetailViewController(feature: feature)
+        self.present(vc, animated: true)
+    }
+    
+    
 }

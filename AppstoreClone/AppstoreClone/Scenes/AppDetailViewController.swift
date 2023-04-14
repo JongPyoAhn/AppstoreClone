@@ -10,7 +10,12 @@ import SnapKit
 import UIKit
 
 final class AppDetailViewController: UIViewController{
-    private let today: Today
+    
+    private var task: URLSessionDataTask!
+    
+    private var today: Today?
+    private var feature: Feature?
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -49,7 +54,10 @@ final class AppDetailViewController: UIViewController{
         button.tintColor = .systemBlue
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         let action = UIAction {[weak self] _ in
-            let activityItems: [Any] = [self!.today.title]
+            var title = ""
+            if let today = self?.today{ title = today.title}
+            if let feature = self?.feature {title = feature.appName}
+            let activityItems: [Any] = [title]
             let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
             self?.present(activityViewController, animated: true)
         }
@@ -57,9 +65,17 @@ final class AppDetailViewController: UIViewController{
         return button
     }()
     
-    init(today: Today) {
-        self.today = today
+    init() {
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init(today: Today) {
+        self.init()
+        self.today = today
+    }
+    convenience init(feature: Feature){
+        self.init()
+        self.feature = feature
     }
     
     required init?(coder: NSCoder) {
@@ -73,8 +89,16 @@ final class AppDetailViewController: UIViewController{
     
     func setUp(){
         configureUI()
-        self.titleLabel.text = today.title
-        self.descriptionLabel.text = today.subTitle
+        if let today = self.today{
+            self.titleLabel.text = today.title
+            self.descriptionLabel.text = today.subTitle
+            self.fetchImage(today.imageURL)
+        }
+        if let feature = self.feature{
+            self.titleLabel.text = feature.appName
+            self.descriptionLabel.text = feature.description
+            self.fetchImage(feature.imageURL)
+        }
     }
     
     func configureUI(){
@@ -115,5 +139,21 @@ final class AppDetailViewController: UIViewController{
         }
         
     }
-        
+    
+    func fetchImage(_ url: String){
+        guard let url = URL(string: url) else {return}
+        let urlRequest = URLRequest(url: url)
+        self.task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                fatalError(error.localizedDescription)
+            }
+            
+            guard let data = data, let image = UIImage(data: data) else {return}
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+            
+        }
+        self.task.resume()
+    }
 }
