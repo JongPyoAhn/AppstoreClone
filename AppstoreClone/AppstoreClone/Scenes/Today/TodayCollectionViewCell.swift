@@ -10,6 +10,7 @@ import SnapKit
 import UIKit
 
 final class TodayCollectionViewCell: UICollectionViewCell{
+    private var task: URLSessionDataTask!
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24.0, weight: .bold)
@@ -44,16 +45,33 @@ final class TodayCollectionViewCell: UICollectionViewCell{
         return imageView
     }()
     
-    func setup() {
+    func setup(today: Today) {
         configureUI()
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.3
         self.layer.shadowRadius = 10
         
-        self.subTitleLabel.text = "서브타이틀"
-        self.descriptionLabel.text = "설명설명"
-        self.titleLabel.text = "앱의 이름"
+        self.subTitleLabel.text = today.subTitle
+        self.descriptionLabel.text = today.description
+        self.titleLabel.text = today.title
+        self.fetchImage(today.imageURL)
+    }
+    
+    func fetchImage(_ url: String){
+        guard let url = URL(string: url) else {return}
+        let urlRequest = URLRequest(url: url)
+        self.task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                fatalError(error.localizedDescription)
+            }
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+        }
+        self.task.resume()
     }
 }
 private extension TodayCollectionViewCell{
