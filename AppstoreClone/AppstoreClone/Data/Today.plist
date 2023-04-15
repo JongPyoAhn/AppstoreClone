@@ -64,13 +64,33 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>보드게임천국</string>
+		<string>러닝하이</string>
 		<key>subTitle</key>
-		<string>집에만 있기 힘든 지금,</string>
+		<string>오늘은 달리실꺼죠?</string>
 		<key>description</key>
-		<string>간단하면서 재밌는 다양한 게임들을 만나보아요.</string>
+		<string>달리면서 달리기의 쾌감을 느껴보아요.</string>
 		<key>imageURL</key>
-		<string>https://cdn.pixabay.com/photo/2021/07/01/19/53/jenga-6380191_1280.jpg</string>
+		<string>https://i.imgur.com/pqCUfOn.jpg#.ZDlMErRTDIM.link</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>하드레이싱</string>
+		<key>subTitle</key>
+		<string>스릴을 즐기고 싶나요?</string>
+		<key>description</key>
+		<string>지금 당장 필드로 나가서 과속해봐요.</string>
+		<key>imageURL</key>
+		<string>https://i.imgur.com/1r6ruZL.jpg#.ZDlN8B8T_Wo.link</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>쉐어카페</string>
+		<key>subTitle</key>
+		<string>어디 좋은카페 없나?</string>
+		<key>description</key>
+		<string>카페 후기를 함께 공유해주세요.</string>
+		<key>imageURL</key>
+		<string>https://i.imgur.com/h0Qd3D1.jpg#.ZDlNlmFWDVg.link</string>
 	</dict>
 </array>
 </plist>

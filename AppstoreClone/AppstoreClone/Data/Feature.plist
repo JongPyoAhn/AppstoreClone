@@ -32,5 +32,25 @@
 		<key>imageURL</key>
 		<string>https://cdn.pixabay.com/photo/2021/06/21/15/03/salmon-6353898_1280.jpg</string>
 	</dict>
+	<dict>
+		<key>type</key>
+		<string>new</string>
+		<key>appName</key>
+		<string>카페찾기</string>
+		<key>description</key>
+		<string>오늘은 어느까페?</string>
+		<key>imageURL</key>
+		<string>https://i.imgur.com/h0Qd3D1.jpg#.ZDlNlmFWDVg.link</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<string>new</string>
+		<key>appName</key>
+		<string>RunningHI</string>
+		<key>description</key>
+		<string>오늘도 달리실 꺼죠?</string>
+		<key>imageURL</key>
+		<string>https://i.imgur.com/pqCUfOn.jpg#.ZDlMErRTDIM.link</string>
+	</dict>
 </array>
 </plist>

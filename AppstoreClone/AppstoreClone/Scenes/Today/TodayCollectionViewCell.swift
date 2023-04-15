@@ -11,6 +11,7 @@ import UIKit
 
 final class TodayCollectionViewCell: UICollectionViewCell{
     private var task: URLSessionDataTask!
+    private let imageCache = NSCache<NSString, UIImage>()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24.0, weight: .bold)
@@ -55,7 +56,12 @@ final class TodayCollectionViewCell: UICollectionViewCell{
         self.subTitleLabel.text = today.subTitle
         self.descriptionLabel.text = today.description
         self.titleLabel.text = today.title
-        self.fetchImage(today.imageURL)
+        if let cachedImage = imageCache.object(forKey: today.imageURL as NSString){
+            self.imageView.image = cachedImage
+            print("들어옴")
+        }else{
+            self.fetchImage(today.imageURL)
+        }
     }
     
     func fetchImage(_ url: String){
@@ -66,6 +72,7 @@ final class TodayCollectionViewCell: UICollectionViewCell{
                 fatalError(error.localizedDescription)
             }
             if let data = data, let image = UIImage(data: data) {
+                self.imageCache.setObject(image, forKey: "\(url)" as NSString)
                 DispatchQueue.main.async {
                     self.imageView.image = image
                 }
