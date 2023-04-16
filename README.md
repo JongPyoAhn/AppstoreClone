@@ -46,6 +46,18 @@
 |<img src="https://user-images.githubusercontent.com/68585628/232266454-24ce7105-0746-4584-8ba9-2133504fed5c.png" width="300">|<img src="https://user-images.githubusercontent.com/68585628/232266547-72bf5efb-b67f-4933-9516-49c5ed8b7438.png" width="300">|
 
 
+## ➡️ DownSampling 구현
+### 도입 이유
+- 필요이상의 픽셀을 줄임으로써 메모리를 효율적으로 관리하기 위해서 입니다.<br>
+
+### 도입 결과
+- 이미지에서 필요한 만큼의 픽셀만 메모리에 저장함으로써 메모리를 207MB -> 41MB로 5배 절약하였습니다.
+- 스크롤 시, 부드러운 흐름으로 사용성을 개선하였습니다.<br>
+
+|DownSampling 도입 전|DownSampling 도입 후|
+|:----:|:----:|
+|<img src="https://user-images.githubusercontent.com/68585628/232280612-31775bc3-69a0-49a2-a4a3-c71b3526d9dc.png" width="300">|<img src="https://user-images.githubusercontent.com/68585628/232280620-a34ad0a3-077a-46f0-b48d-441f257885dd.png" width="300">|
+
 
 # 구현 결과
 
