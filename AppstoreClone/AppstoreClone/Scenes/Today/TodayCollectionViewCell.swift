@@ -58,7 +58,6 @@ final class TodayCollectionViewCell: UICollectionViewCell{
         self.titleLabel.text = today.title
         if let cachedImage = imageCache.object(forKey: today.imageURL as NSString){
             self.imageView.image = cachedImage
-            print("들어옴")
         }else{
             self.fetchImage(today.imageURL)
         }
